@@ -1,0 +1,23 @@
+# Description: Deployment and Service for blankapi
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blankapi
+  namespace: tools
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: blankapi
+  template:
+    metadata:
+      labels:
+        app: blankapi
+    spec:
+      containers:
+      - name: blankapi
+        image: 283840542173.dkr.ecr.eu-central-1.amazonaws.com/databrix.lst.blankapi:1.0.0
+        imagePullPolicy: IfNotPresent
+
+---
+apiVersion: v1
